@@ -1,7 +1,7 @@
 package com.valya.utils;
 
-import com.valya.api.generatingdata.GeneratingDataOfUser;
-import com.valya.api.models.User;
+import api.generatingdata.GeneratingDataOfUser;
+import api.models.User;
 import com.valya.steps.UserSteps;
 import io.qameta.allure.Description;
 import io.restassured.response.ValidatableResponse;
@@ -26,12 +26,11 @@ public class BaseTest {
 
     @After
     @Description("Конфигурация после окончания теста")
-    public void deleteDataOfUser() throws InterruptedException {
+    public void deleteDataOfUser() {
         if (response.extract().body().path("success").equals(true)) {
             accessToken = UserSteps.getAccessToken(response);
             user.setAccessToken(accessToken);
             UserSteps.deleteUser(user);
         }
-        Thread.sleep(2000);
     }
 }

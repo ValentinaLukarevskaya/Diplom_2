@@ -1,7 +1,7 @@
-package com.valya.api.generatingdata;
+package api.generatingdata;
 
+import api.models.User;
 import com.github.javafaker.Faker;
-import com.valya.api.models.User;
 
 public class GeneratingDataOfUser {
     public static User createNewUser() {

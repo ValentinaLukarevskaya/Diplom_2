@@ -1,11 +1,10 @@
 package com.valya.specifications;
 
 
+import com.valya.config.ConfigSingle;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
-
-import static com.valya.config.ConfigSingle.config;
 
 public class Specifications {
 
@@ -15,8 +14,8 @@ public class Specifications {
 
     public static RequestSpecification requestSpecification() {
         return new RequestSpecBuilder()
-                .setBaseUri(config.getBaseUriProperties())
-                .setBasePath(config.getBaseApiPathProperties())
+                .setBaseUri(ConfigSingle.config.getBaseUriProperties())
+                .setBasePath(ConfigSingle.config.getBaseApiPathProperties())
                 .setContentType("application/json")
                 .addFilter(FILTER)
                 .build();

@@ -1,6 +1,6 @@
 package com.valya.steps;
 
-import com.valya.api.models.User;
+import api.models.User;
 import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;

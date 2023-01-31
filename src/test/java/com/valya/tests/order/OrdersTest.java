@@ -1,9 +1,9 @@
 package com.valya.tests.order;
 
 import com.github.javafaker.Faker;
-import com.valya.api.models.Order;
-import com.valya.api.models.User;
-import com.valya.api.generatingdata.GeneratingDataOfUser;
+import api.models.Order;
+import api.models.User;
+import api.generatingdata.GeneratingDataOfUser;
 import com.valya.steps.OrderSteps;
 import com.valya.utils.BaseTest;
 import io.qameta.allure.Description;
@@ -34,14 +34,12 @@ public class OrdersTest extends BaseTest {
 
     @Override
     @Before
-    public void setUp() throws InterruptedException {
+    public void setUp() {
         user = GeneratingDataOfUser.createNewUser();
 
         response = UserSteps.createUser(user);
-        Thread.sleep(2000);
 
         loginResponse = UserSteps.loginUser((new User(user.getEmail(), user.getPassword(), null)));
-        Thread.sleep(2000);
     }
 
     @Feature("Получение заказов конкретного пользователя c авторизацией")

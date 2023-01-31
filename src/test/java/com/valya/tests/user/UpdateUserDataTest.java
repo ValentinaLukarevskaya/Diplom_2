@@ -1,7 +1,7 @@
 package com.valya.tests.user;
 
-import com.valya.api.models.User;
-import com.valya.api.generatingdata.GeneratingDataOfUser;
+import api.models.User;
+import api.generatingdata.GeneratingDataOfUser;
 import com.valya.steps.UserSteps;
 import com.valya.utils.BaseTest;
 import io.qameta.allure.Description;
@@ -25,21 +25,19 @@ public class UpdateUserDataTest extends BaseTest {
 
     @Override
     @Before
-    public void setUp() throws InterruptedException {
+    public void setUp() {
         user = GeneratingDataOfUser.createNewUser();
 
         response = UserSteps.createUser(user);
-        Thread.sleep(2000);
 
         loginResponse = UserSteps.loginUser((new User(user.getEmail(), user.getPassword(), null)));
-        Thread.sleep(2000);
     }
 
     @Feature("Изменение 'email' пользователя с авторизацией")
     @Test
     @DisplayName("Изменение 'email' пользователя с авторизацией")
     @Description("Ожидаемый код ответа: 200")
-    public void updateUserEmailWithAuth() throws InterruptedException {
+    public void updateUserEmailWithAuth() {
         accessToken = UserSteps.getAccessToken(user);
         updateDataUser = GeneratingDataOfUser.editEmailOfUser();
         expectedEmail = updateDataUser.getEmail();
@@ -55,7 +53,7 @@ public class UpdateUserDataTest extends BaseTest {
     @Test
     @DisplayName("Изменение 'name' пользователя с авторизацией")
     @Description("Ожидаемый код ответа: 200")
-    public void updateUserNameWithAuth() throws InterruptedException {
+    public void updateUserNameWithAuth() {
         accessToken = UserSteps.getAccessToken(user);
         updateDataUser = GeneratingDataOfUser.editNameOfUser();
         expectedName = updateDataUser.getName();
@@ -71,7 +69,7 @@ public class UpdateUserDataTest extends BaseTest {
     @Test
     @DisplayName("Изменение 'password' пользователя с авторизацией")
     @Description("Ожидаемый код ответа: 200")
-    public void updateUserPasswordWithAuth() throws InterruptedException {
+    public void updateUserPasswordWithAuth() {
         accessToken = UserSteps.getAccessToken(user);
         updateDataUser = GeneratingDataOfUser.editPasswordOfUser();
 
@@ -80,7 +78,6 @@ public class UpdateUserDataTest extends BaseTest {
                 .statusCode(OK_STATUS)
                 .and()
                 .body(ASSERT_SUCCESS, equalTo(true));
-        Thread.sleep(2000);
 
         user.setPassword(updateDataUser.getPassword());
 

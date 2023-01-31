@@ -1,6 +1,6 @@
 package com.valya.tests.user;
 
-import com.valya.api.generatingdata.GeneratingDataOfUser;
+import api.generatingdata.GeneratingDataOfUser;
 import com.valya.steps.UserSteps;
 import com.valya.utils.BaseTest;
 import io.qameta.allure.Description;
@@ -34,9 +34,8 @@ public class RegisterOfUserTest extends BaseTest {
     @Test
     @DisplayName("Создание двух одинаковых пользователей")
     @Description("Ожидаемый код ответа: 403")
-    public void createTwoIdenticalUser() throws InterruptedException {
+    public void createTwoIdenticalUser() {
         response = UserSteps.createUser(user);
-        Thread.sleep(2000);
 
         errorResponse = UserSteps.createUser(user);
         errorResponse

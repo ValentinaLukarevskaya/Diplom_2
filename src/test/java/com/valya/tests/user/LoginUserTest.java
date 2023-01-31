@@ -1,8 +1,8 @@
 package com.valya.tests.user;
 
 import com.github.javafaker.Faker;
-import com.valya.api.models.User;
-import com.valya.api.generatingdata.GeneratingDataOfUser;
+import api.models.User;
+import api.generatingdata.GeneratingDataOfUser;
 import com.valya.utils.BaseTest;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -23,11 +23,10 @@ public class LoginUserTest extends BaseTest {
 
     @Override
     @Before
-    public void setUp() throws InterruptedException {
+    public void setUp() {
         user = GeneratingDataOfUser.createNewUser();
 
         response = UserSteps.createUser(user);
-        Thread.sleep(2000);
     }
 
     @Feature("Авторизация пользователя")

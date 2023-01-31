@@ -1,14 +1,13 @@
-package com.valya.api.models;
+package api.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order {
-    private List<String> ingredients;
+public class LoginUser {
+    private String email;
+    private String password;
 }
